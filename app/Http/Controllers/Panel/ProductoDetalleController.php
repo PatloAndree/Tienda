@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers\Panel;
+
+use App\Http\Controllers\Controller;
+// use App\Models\Asignacionesdiarias;
+// use App\Models\Asistencias;
+// use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Productos;
+
+
+class ProductoDetalleController extends Controller
+{
+	// public function __construct()
+	// {
+	// 	$this->middleware('role:6');
+	// }
+
+	public function index($productoid)
+	{
+				$data['producto']= Productos::where('status', 1)->where('id',$productoid)->first();
+				return view('/layouts/productodetalle',$data);
+	}
+
+}
